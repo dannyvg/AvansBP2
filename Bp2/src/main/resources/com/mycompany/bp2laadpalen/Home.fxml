@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<VBox alignment="CENTER" maxHeight="800.0" maxWidth="1500.0" minHeight="800.0" minWidth="1500.0" prefHeight="800.0" prefWidth="1500.0" spacing="20.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.bp2laadpalen.Home">
+   <children>
+      <FlowPane minHeight="80.0" minWidth="1500.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;">
+         <VBox.margin>
+            <Insets top="-20.0" />
+         </VBox.margin>
+         <children>
+            <Label onMouseClicked="#switchToMedewerker" text="Werknemer">
+               <FlowPane.margin>
+                  <Insets left="20.0" top="25.0" />
+               </FlowPane.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label onMouseClicked="#switchToControle" text="Controles">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets left="25.0" top="25.0" />
+               </FlowPane.margin>
+            </Label>
+            <Label onMouseClicked="#switchToInstallatiePlanning" text="Installatieplanning">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets left="25.0" top="25.0" />
+               </FlowPane.margin>
+            </Label>
+            <Label onMouseClicked="#switchToReserveringen" text="Reserveringen">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets left="970.0" top="25.0" />
+               </FlowPane.margin>
+            </Label>
+            <Label onMouseClicked="#switchToKlanten" text="Klanten">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets left="1270.0" top="-30.0" />
+               </FlowPane.margin>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+               <FlowPane.margin>
+                  <Insets left="25.0" top="50.0" />
+               </FlowPane.margin>
+            </ImageView>
+            <Label text="Map">
+               <padding>
+                  <Insets left="370.0" top="30.0" />
+               </padding>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <SplitPane dividerPositions="0.7263374485596708" minHeight="600.0" prefHeight="160.0" prefWidth="200.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <WebView fx:id="webView" layoutX="-1.0" layoutY="1.0" prefWidth="1056.0" />
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tvLaadpalen" prefHeight="600.0" prefWidth="396.0">
+                    <columns>
+                      <TableColumn fx:id="colLaadpalen" prefWidth="373.0" text="Laadpalen" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+         <VBox.margin>
+            <Insets top="80.0" />
+         </VBox.margin>
+      </SplitPane>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

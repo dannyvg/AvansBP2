@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+        <script src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
+        <script>
+            var map;
+            var markers = new OpenLayers.Layer.Markers("Markers");
+            var vector = new OpenLayers.Layer.Vector("Vectors");
+            function start() {
+                map = new OpenLayers.Map("mapdiv");
+                map.addLayer(new OpenLayers.Layer.OSM());
+                var lonlat = new OpenLayers.LonLat(4.7860003, 51.5891643)
+                        .transform(
+                                new OpenLayers.Projection("EPSG:4326"),
+                                map.getProjectionObject()
+                                );
+                var zoom = 12;
+                map.addLayer(markers);
+                map.setCenter(lonlat, zoom);
+            }
+            function addPin(lon, lat, straat) {
+                var lonlat = new OpenLayers.LonLat(lon, lat, straat)
+                        .transform(
+                                new OpenLayers.Projection("EPSG:4326"),
+                                map.getProjectionObject()
+                                );
+                theMarker = new OpenLayers.Marker(lonlat);
+                markers.addMarker(theMarker);
+                map.addLayer(markers);
+            }
+            function addShape(cleanPoints) {
+                var vc = new Array();
+                var thePoints = cleanPoints.split("|");
+                for (var i = 0; i < thePoints.length; i++) {
+                    var thisPoint = thePoints[i];
+                    var onePoint = thisPoint.split(",");
+                    var lon = onePoint[0];
+                    var lat = onePoint[1];
+                    vc.push(new OpenLayers.Geometry.Point(lon, lat));
+                }
+                var line = new OpenLayers.Geometry.LineString(vc);
+                line.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
+                var style = {
+                    strokeColor: '#0000ff',
+                    strokeOpacity: 0.5,
+                    strokeWidth: 5
+                };
+                var lineFeature = new OpenLayers.Feature.Vector(line, null, style);
+                vector.addFeatures(lineFeature);
+                map.addLayer(vector);
+            }
+        </script>
+    </head>
+    <body onload="start()">
+        <h1> HELPPPP </h1>
+        <div id="mapdiv"></div>
+        <!--button type="button" onclick="addPin(4.73144102891065, 51.602845202713, 'markt')">Klik</button>
+        <button type="button" onclick="addShape('4.73144102891065,51.602845202713|4.73169693604537,51.6028235086834|4.73203119187749,51.6027969584929')">Klik</button-->
+    </body>
+</html>
